@@ -19,10 +19,10 @@
   }
 
 
-  const getLowestPrice = (products: Array<Product>): number => {
+  const getLowestPrice = (products: Array<Product>, minor: number, major: number ): number => {
     let lowestPriceIndex = 0
 
-    for(let i = 0; i < products.length; i++) {
+    for(let i = minor; i < major; i++) {
       if(products[i].getPrice < products[lowestPriceIndex].getPrice) {
         lowestPriceIndex = i
       }
@@ -31,10 +31,10 @@
     return lowestPriceIndex
   }
 
-  const getBiggestPrice = (produtos: Array<Product>): number => {
+  const getBiggestPrice = (produtos: Array<Product>, minor: number, major: number): number => {
     let biggestPriceIndex = 0
 
-    for(let i = 0; i < produtos.length; i++) {
+    for(let i = minor; i < major; i++) {
       if(produtos[i].getPrice > produtos[biggestPriceIndex].getPrice) {
         biggestPriceIndex = i
       }
@@ -54,8 +54,8 @@
         new Product('Compass', 240000)
       ]
 
-      const lowestIndex = getLowestPrice(Produtos)
-      const biggestIndex = getBiggestPrice(Produtos)
+      const lowestIndex = getLowestPrice(Produtos, 0, Produtos.length)
+      const biggestIndex = getBiggestPrice(Produtos, 0, Produtos.length)
 
 
       console.log(

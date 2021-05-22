@@ -21,18 +21,18 @@
         });
         return Product;
     }());
-    var getLowestPrice = function (products) {
+    var getLowestPrice = function (products, minor, major) {
         var lowestPriceIndex = 0;
-        for (var i = 0; i < products.length; i++) {
+        for (var i = minor; i < major; i++) {
             if (products[i].getPrice < products[lowestPriceIndex].getPrice) {
                 lowestPriceIndex = i;
             }
         }
         return lowestPriceIndex;
     };
-    var getBiggestPrice = function (produtos) {
+    var getBiggestPrice = function (produtos, minor, major) {
         var biggestPriceIndex = 0;
-        for (var i = 0; i < produtos.length; i++) {
+        for (var i = minor; i < major; i++) {
             if (produtos[i].getPrice > produtos[biggestPriceIndex].getPrice) {
                 biggestPriceIndex = i;
             }
@@ -48,8 +48,8 @@
                 new Product('Renegate', 85000),
                 new Product('Compass', 240000)
             ];
-            var lowestIndex = getLowestPrice(Produtos);
-            var biggestIndex = getBiggestPrice(Produtos);
+            var lowestIndex = getLowestPrice(Produtos, 0, Produtos.length);
+            var biggestIndex = getBiggestPrice(Produtos, 0, Produtos.length);
             console.log("O produto com menor pre\u00E7o \u00E9 " + Produtos[lowestIndex].getName + " por apenas R$ " + Produtos[lowestIndex].getPrice);
             console.log("O produto com maior pre\u00E7o \u00E9 " + Produtos[biggestIndex].getName + " por R$ " + Produtos[biggestIndex].getPrice);
         }
